@@ -13,7 +13,7 @@ Git recognises commands in your $PATH with a prefix of `git-`. You can clone thi
 ```
 git clone git@github.com:bambii7/git-commands.git
 cd git-commands
-printf 'export PATH="%s:$PATH"' $(pwd)/bin >> ~/.bash_profile
+printf 'export PATH="%s:$PATH"' "$PWD/bin" >> ~/.bash_profile
 ```
 
 The benifits of keeping this repo in your PATH is to be able to pull updates when they occur.
