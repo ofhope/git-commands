@@ -4,7 +4,7 @@ BUMP=${1:-patch}
 
 VALID_ARGS=("major" "minor" "patch")
 
-if [[ -z $(printf "%s\n" "${VALID_ARGS[@]}" | grep -w $BUMP) ]]; then
+if [[ -z $(printf "%s\n" "${VALID_ARGS[@]}" | grep -w "$BUMP") ]]; then
   printf "Error: Invalid argument, valid args are: "
   printf "%s " "${VALID_ARGS[@]}"
   printf "\n"
@@ -24,13 +24,13 @@ fi
 
 case $BUMP in
 "major")
-  MAJOR=$(($MAJOR+1))
+  MAJOR=$((MAJOR+1))
   ;;
 "minor")
-  MINOR=$(($MINOR+1))
+  MINOR=$((MINOR+1))
   ;;
 "patch")
-  PATCH=$(($PATCH+1))
+  PATCH=$((PATCH+1))
   ;;
 esac
 
