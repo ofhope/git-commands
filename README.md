@@ -20,3 +20,5 @@ The benifits of keeping this repo in your PATH is to be able to pull updates whe
 Moving the scripts to a seperate folder keeps you responsible to sync script updates or renames.
 
 ### Licence
+
+[MIT Licence](LICENSE.md)
