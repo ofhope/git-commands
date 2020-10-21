@@ -1,0 +1,37 @@
+#!/bin/bash
+
+BUMP=${1:-patch}
+
+VALID_ARGS=("major" "minor" "patch")
+
+if [[ -z $(printf "%s\n" "${VALID_ARGS[@]}" | grep -w $BUMP) ]]; then
+  printf "Error: Invalid argument, valid args are: "
+  printf "%s " "${VALID_ARGS[@]}"
+  printf "\n"
+  exit 1;
+fi
+
+SEMVER=$(git describe --abbrev=0)
+
+if [[ $SEMVER =~ v([0-9]+)\.([0-9]+)\.([0-9]+) ]]; then
+  MAJOR=${BASH_REMATCH[1]}
+  MINOR=${BASH_REMATCH[2]}
+  PATCH=${BASH_REMATCH[3]}
+else
+  printf "Error: No SemVer style tag was found \n"
+  exit 1;
+fi
+
+case $BUMP in
+"major")
+  MAJOR=$(($MAJOR+1))
+  ;;
+"minor")
+  MINOR=$(($MINOR+1))
+  ;;
+"patch")
+  PATCH=$(($PATCH+1))
+  ;;
+esac
+
+printf "v%d.%d.%d\n" $MAJOR $MINOR $PATCH
