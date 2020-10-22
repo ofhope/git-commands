@@ -4,7 +4,7 @@ BUMP=${1:-patch}
 
 VALID_ARGS=("major" "minor" "patch")
 
-if [[ -z $(printf "%s\n" "${VALID_ARGS[@]}" | grep -w "$BUMP") ]]; then
+if [[ " ${VALID_ARGS[*]} " != *" $BUMP "* ]]; then
   printf "Error: Invalid argument, valid args are: "
   printf "%s " "${VALID_ARGS[@]}"
   printf "\n"

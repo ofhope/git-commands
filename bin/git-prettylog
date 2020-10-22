@@ -1,0 +1,25 @@
+#!/bin/bash
+
+################################################
+# TODO: accept argument for log length
+# TODO: accept argument for log offset
+# TODO: accept argument for log daterange
+#
+# IE.
+# git prettylog --date:21.05.2020
+# git prettylog --date:21.05.2020-15.06.2020
+# git prettylog --date:21.05.2020-15.06.2020
+#
+# git log  -10 # limits the log output to 10.
+# 
+# git prettylog 10 # limits the log output to 10.
+# git prettylog 10:20 # limits the log output to 10 offset by 20
+################################################
+
+git log \
+  --graph \
+  --abbrev-commit \
+  --decorate=no \
+  --date=format:'%Y-%m-%d' \
+  --format=format:'%C(03)%>|(26)%h%C(reset)  %C(04)%ad%C(reset)  %C(green)%<(16,trunc)%an%C(reset)  %C(bold 1)%d%C(reset) %C(bold 0)%>|(1)%s%C(reset)' \
+  --all
