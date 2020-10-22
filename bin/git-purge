@@ -1,3 +1,18 @@
 #!/bin/sh
 
-git branch --merged| grep -v -E  "(^\*|master)" | xargs git branch -d
+# TODO: Purge origin `git purge origin`
+# TODO: Include force flag to bypass warning `git purge -f`
+
+COLOR_MERGED='\033[1;32m' # Light Green
+COLOR_NONE='\033[0m'
+
+git info
+
+printf "Branches in ${COLOR_MERGED} green ${COLOR_NONE} are merged to main and will be removed. " 
+
+echo "" && : 
+
+read -r -p "Are you sure? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    git branch --merged| grep -v -E  "(^\*|master)" | xargs git branch -d
+fi
