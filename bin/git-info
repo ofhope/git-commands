@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# TODO: investigate if merged at date is possible to include
+# TODO: would prefer a git command `git-info` which accepts reports `git info branch`
+
+COLOR_UNMERGED='\033[1;31m' # Light Red
+COLOR_MERGED='\033[1;32m' # Light Green
+COLOR_CURRENT='\033[1;33m' # Yellow
+COLOR_NONE='\033[0m'
+
+function colorPrint {
+    printf "${2} %s ${COLOR_NONE}" "$1"
+}
+
+function lineBreak {
+  echo "" &&
+  :
+}
+
+# Bash 3 output to array ()
+BRANCHES=($(git branch | tr '*' ' '))
+MERGED=($(git branch --merged main | tr '*' ' '))
+UNMERGED=($(git branch --no-merged))
+CURRENT_BRANCH=$(git branch --show-current)
+
+# Ledgend
+colorPrint "merged" "$COLOR_MERGED"
+colorPrint "unmerged" "$COLOR_UNMERGED"
+colorPrint "cuurent" "$COLOR_CURRENT"
+lineBreak
+lineBreak
+
+for BRANCH in "${BRANCHES[@]}"
+do
+  if [[ " ${CURRENT_BRANCH[*]} " == *" $BRANCH "* ]]; then
+    colorPrint "$BRANCH" "$COLOR_CURRENT"
+    lineBreak
+    continue
+  fi
+  if [[ " ${MERGED[*]} " == *" $BRANCH "* ]]; then
+    colorPrint "$BRANCH" "$COLOR_MERGED"
+    lineBreak
+    continue
+  fi
+  if [[ " ${UNMERGED[*]} " == *" $BRANCH "* ]]; then
+    colorPrint "$BRANCH" "$COLOR_UNMERGED"
+    lineBreak
+    continue
+  fi
+done
