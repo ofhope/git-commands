@@ -8,11 +8,14 @@ COLOR_NONE='\033[0m'
 
 git info
 
-printf "Branches in ${COLOR_MERGED} green ${COLOR_NONE} are merged to main and will be removed. " 
+echo "Branches in ${COLOR_MERGED} green ${COLOR_NONE} are merged to main and will be removed. " 
 
 echo "" && : 
 
-read -r -p "Are you sure? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+echo "Are you sure? [y/N] "
+
+read -r response
+
+if echo "$response" | grep -Eq "^([yY][eE][sS]|[yY])$"; then
     git branch --merged| grep -v -E  "(^\*|master)" | xargs git branch -d
 fi
