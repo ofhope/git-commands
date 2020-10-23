@@ -1,0 +1,44 @@
+#!/bin/bash
+
+COLOR_WARNING=$(printf '\033[1;31m') # Light Red
+COLOR_NONE=$(printf '\033[0m')
+
+MASTER_BRANCH="master"
+MAIN_BRANCH="main"
+
+# shellcheck disable=SC2207
+BRANCHES=($(git branch | tr '*' ' '))
+
+if [[ " ${BRANCHES[*]} " == *" $MASTER_BRANCH "* && " ${BRANCHES[*]} " == *" $MAIN_BRANCH "* ]]; then
+  cat << EOF
+  ${COLOR_WARNING}
+  Error: This repo has a main and master branch!!!
+  ${COLOR_NONE}
+  The main branch is indistinguishable.
+  Favor main over master.
+
+EOF
+  exit 1
+fi
+
+if [[ " ${BRANCHES[*]} " != *" $MASTER_BRANCH "* && " ${BRANCHES[*]} " != *" $MAIN_BRANCH "* ]]; then
+  cat << EOF
+  ${COLOR_WARNING}
+  Error: This repo no main or master branch!!!
+  ${COLOR_NONE}
+  The main branch is indistinguishable.
+  Favor main over master. 
+
+EOF
+  exit 1
+fi
+
+if [[ " ${BRANCHES[*]} " == *" $MASTER_BRANCH "* ]]; then
+  echo "${MASTER_BRANCH}"
+  exit 0
+fi
+
+if [[ " ${BRANCHES[*]} " == *" $MAIN_BRANCH "* ]]; then
+  echo "${MAIN_BRANCH}"
+  exit 0
+fi
