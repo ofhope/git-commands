@@ -3,8 +3,19 @@
 A small collection of user friendly git commands.
 
 - `git last-tag` displays the latest tag.
-- `git next-tag` increments SemVer style tags. Args `major|minor|patch(default)`
-- `git purge-merged` clean up task deleting all branches merged into master.
+- `git next-tag` increments SemVer style tags. Args `major|minor|patch(default)`.
+- `git purge` clean up task deleting all branches merged into master.
+- `git info` display branches colour coded by merged status.
+- `git main` checks for master or main branch, exits with error if none or both are found.
+- `git migrate-branch` built to support the switch to `main` branch. A move from the technology industry to abolish slavery references. Also supports migrating arbitary branches from one name space to another. `git migrate` assumes `git mirgrate master main`. Steps involeda are. 
+  1. Check your current branch status
+  2. Checkout deprecated branch
+  3. Branch to new namespace
+  4. Push to origin
+  5. Delete deprecated branch locally
+  6. Finally delete from remote.
+- `git prettylog` oneline summary log output.
+- `git mv-branch` script to move/migrate branch names locally & on remote. By default it migrates master branch to main for a more inclusive tech industry.
 
 ### Why Git Commands
 
