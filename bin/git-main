@@ -1,7 +1,9 @@
 #!/bin/bash
 
-COLOR_WARNING=$(printf '\033[1;31m') # Light Red
-COLOR_NONE=$(printf '\033[0m')
+set -e
+
+COLOR_WARNING=$(tput setaf 1) # Light Red
+COLOR_NONE=$(tput setaf 0)
 
 MASTER_BRANCH="master"
 MAIN_BRANCH="main"
