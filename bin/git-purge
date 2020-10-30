@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # TODO: Purge origin `git purge origin`
 # TODO: Include force flag to bypass warning `git purge -f`
@@ -14,8 +14,8 @@ echo "" && :
 
 echo "Are you sure? [y/N] "
 
-read -r response
+read -r RESPONSE
 
-if echo "$response" | grep -Eq "^([yY][eE][sS]|[yY])$"; then
+if [[ $RESPONSE =~ ^[Yy]$ ]]; then
     git branch --merged| grep -v -E  "(^\*|master)" | xargs git branch -d
 fi
