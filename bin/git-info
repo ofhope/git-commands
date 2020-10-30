@@ -17,12 +17,12 @@ function colorPrint {
 }
 
 MASTER_BRANCH=$(git main)
-echo $MASTER_BRANCH
+
 # shellcheck disable=SC2207
 BRANCHES=($(git branch --format='%(refname:short)'))
 # MERGED=($(git branch --merged "$(git main)" | tr '*' ' '))
 # shellcheck disable=SC2207
-MERGED=($(git branch --merged $MASTER_BRANCH --format='%(refname:short)'))
+MERGED=($(git branch --merged "$MASTER_BRANCH" --format='%(refname:short)'))
 # shellcheck disable=SC2207
 UNMERGED=($(git branch --no-merged))
 CURRENT_BRANCH=$(git branch --show-current)
