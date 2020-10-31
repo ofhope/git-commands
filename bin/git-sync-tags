@@ -1,0 +1,4 @@
+#!/bin/bash
+
+git fetch --all --tags
+git push origin --tags
