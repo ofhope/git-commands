@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git for-each-ref \
+  --format='%(color:bold)%(tag)%(color:reset) %(tag) %(authorname) %(color:green)%(authordate:short)%(color:reset) %(subject)' \
+	--sort=-taggerdate

@@ -8,7 +8,7 @@ COLOR_NONE='\033[0m'
 
 git info
 
-echo "Branches in ${COLOR_MERGED} green ${COLOR_NONE} are merged to main and will be removed. " 
+printf "Branches in ${COLOR_MERGED} %s ${COLOR_NONE} are merged to main and will be removed. " "green"
 
 echo "" && : 
 

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git fetch --all --tags
+git tag -a $(git next-tag) $(git last-commit)
+git push origin --tags
