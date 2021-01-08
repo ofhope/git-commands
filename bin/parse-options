@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# actually parse the options
+while [[ $1 = -?* ]]; do
+    case $1 in
+        --gc)
+            echo "Repacking objects"
+            git gc --aggressive --auto
+            ;;
+        *) ;;
+    esac
+
+shift
+done

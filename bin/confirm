@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Are you sure? [y/N] "
+
+read -r RESPONSE
+
+if [[ $RESPONSE =~ ^[Yy]$ ]]; then
+    git branch --merged| grep -v -E  "(^\*|master)" | xargs git branch -d
+fi
