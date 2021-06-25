@@ -7,7 +7,7 @@
 - `git purge` clean up task deleting all branches merged into master.
 - `git info` display branches colour coded by merged status.
 - `git main` checks for master or main branch, exits with error if none or both are found.
-- `git mv-branch` built to support the switch from `master` to `main` branch on git repos. For a more inclusive tech industry. Also supports migrating arbitrary branches from one name space to another. `git migrate` assumes `git mirgrate master main`. Steps involved are.
+- `git mv-branch` built to support the switch from `master` to `main` branch on git repos. For a more inclusive tech industry. Also supports migrating arbitrary branches from one name space to another. `git mv-branch` assumes `git mv-branch master main`. Steps involved are.
   1. Check your current branch status
   2. Checkout deprecated branch
   3. Branch to new namespace
@@ -28,7 +28,7 @@ This allows version controlled commands standardised by ShellCheck.
 Git recognises commands in your $PATH with a prefix of `git-`. You can clone this directory and include the `/bin` folder in your path. Or copy the contents to another location already in your path.
 
 ```bash
-git clone git@github.com:bambii7/git-commands.git
+git clone git@github.com:ofhope/git-commands.git
 cd git-commands
 printf 'export PATH="%s:$PATH"' "$PWD/bin" >> ~/.bash_profile
 source ~/.bash_profile
